@@ -6,11 +6,11 @@
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Guerra Mundial Z - Traders</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <link rel="icon" href="https://cdn.discordapp.com/attachments/991760458614841374/998646633824780318/8857-blood.png">
+                <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
                 <style type="text/css">
                 @import url(https://fonts.googleapis.com/css?family=Fjalla+One);
-                
-
                 body{
                     background-image: url("https://www.somosxbox.com/wp-content/uploads/2019/04/dayz-1-somoxbox.jpg");
                     background-position: center center;
@@ -19,7 +19,8 @@
                     background-size: cover;
                     background-color: #999;
                     font-family: Arial;
-                    color:#b3b3b3
+                    color:#b3b3b3;
+
                 }
 
                 svg {
@@ -67,6 +68,7 @@
                 @keyframes stroke-offset{
                     100% {stroke-dashoffset: -35%;}
                 }
+
                 
                     #Buscador {
                         width: 95%;
@@ -87,7 +89,6 @@
                     }
             
                     #Tabla {
-
                         border-collapse: collapse;
                         width: 100%; 
                         font-family:"verdana";
@@ -122,32 +123,82 @@
                         backdrop-filter: blur(1.5px);
                         -webkit-backdrop-filter: blur(1.5px);
                     }
+
+                    #content {
+                        visibility: hidden;
+                        display: none;
+                        z-index: 2;
+                    }
+
+                    .loadercontainer {
+                        background-image: url("https://www.somosxbox.com/wp-content/uploads/2019/04/dayz-1-somoxbox.jpg");
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                    #pcont {
+                        height: 0%;
+                        width: 100%;
+                    }
+                    
+                    .progress {
+                        margin-top: 45%;
+                        margin-left: 10%;
+                        margin-right: 5%;
+                        justify-content: flex-start;
+                        border-radius: 100px;
+                        align-items: center;
+                        position: relative;
+                        padding: 0 5px;
+                        display: flex;
+                        height: 40px;
+                        width: 100%;
+                      }
+                      
+                      .progress-value {
+                        animation: load 5s normal forwards;
+                        box-shadow: 0 10px 40px -10px #fff;
+                        border-radius: 100px;
+                        background: #fff;
+                        height: 30px;
+                        width: 0;
+                      }
+                      
+                      @keyframes load {
+                        0% { width: 0; }
+                        100% { width: 68%; }
+                      }
+            
                 </style>
             </head>
             <body>
-            <svg viewBox="0 0 960 300">
-                <symbol id="s-text">
-                    <text text-anchor="middle" x="50%" y="80%">GMZ</text>
-                </symbol>
-                <g class = "g-ants">
-                    <use xlink:href="#s-text" class="mg-text-me"></use>
-                    <use xlink:href="#s-text" class="mg-text-me"></use>
-                    <use xlink:href="#s-text" class="mg-text-me"></use>
-                    <use xlink:href="#s-text" class="mg-text-me"></use>
-                    <use xlink:href="#s-text" class="mg-text-me"></use>
-                </g>
-            </svg>
-                <input type="text" class="center" id="Buscador" onkeyup="searchBar()" placeholder="Buscar por nombre..">
-                <table id="Tabla">
-                    <tbody>
-                    <tr class="header" id="center" style="color:green">
-                        <th style="width:16%;">Trader 🛒</th>
-                        <th style="width:16%;">Categoria 🔠</th>    
-                        <th style="width:16%;">Objeto 📦</th>
-                        <th style="width:16%;">Estado</th>
-                        <th style="width:16%;">Precio 💲</th>
-                        <th style="width:16%;">Precio Venta 💰</th>
-                    </tr>
+            <div id="content">
+                <svg viewBox="0 0 960 300">
+                    <symbol id="s-text">
+                        <text text-anchor="middle" x="50%" y="80%">GMZ</text>
+                    </symbol>
+                    <g class = "g-ants">
+                        <use xlink:href="#s-text" class="mg-text-me"></use>
+                        <use xlink:href="#s-text" class="mg-text-me"></use>
+                        <use xlink:href="#s-text" class="mg-text-me"></use>
+                        <use xlink:href="#s-text" class="mg-text-me"></use>
+                        <use xlink:href="#s-text" class="mg-text-me"></use>
+                    </g>
+                </svg>
+                    <input type="text" class="center" id="Buscador" onkeyup="searchBar()" placeholder="Buscar por nombre..">
+                    <table id="Tabla">
+                        <tbody>
+                        <tr class="header" id="center" style="color:green">
+                            <th style="width:16%;">Trader 🛒</th>
+                            <th style="width:16%;">Categoria 🔠</th>    
+                            <th style="width:16%;">Objeto 📦</th>
+                            <th style="width:16%;">Estado</th>
+                            <th style="width:16%;">Precio 💲</th>
+                            <th style="width:16%;">Precio Venta 💰</th>
+                        </tr>
             
                         <tr style="color:#b3b3b3">
                             <td>Comida/Bebida</td>
@@ -15152,10 +15203,35 @@
                             <td>-1 $</td>
                         </tr>
                         
-                <tbody>
-                </table>
+                        <tbody>
+                    </table>
+                </div>
+                <div class"loadercontainer">
+                    <div id="pcont">
+                        <div class="progress">
+                            <div class="progress-value"></div>
+                        </div>
+                    </div>
                 </div>
                 <script>
+
+                
+                    $(window).on("load", function() {
+                        $("body").css("overflow", "hidden");
+                        setTimeout(
+                            function() 
+                            {
+                                $(".loadercontainer").css('display', 'none');
+                            }, 8000);
+
+                        setTimeout(
+                            function() 
+                            {
+                                $("#content").css("visibility", "visible");
+                                $("body").css("overflow-y", "scroll");
+                            }, 1100);
+                        
+                    });
                     function searchBar() {
                         var input, filter, table, tr, td, i, txtValue;
                         input = document.getElementById("Buscador");
