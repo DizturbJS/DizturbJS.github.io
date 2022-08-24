@@ -23,7 +23,7 @@
 
     }
 
-    svg {
+    #logo {
         display: block;
         font: 10.5em 'Montserrat';
         width: 960px;
@@ -71,15 +71,15 @@
 
     
         #Buscador {
-            width: 95%;
+
+            margin-right: 5%;
+            margin-left: 12%;
+            margin-bottom: 10px;
+            width: 83%;
             border-radius: 5px;
             font-size: 16px; 
             padding: 12px 20px 12px 40px; 
             border: 1px solid #ddd;
-            margin-left: 10px;
-            margin-top: 10px;
-            margin-right: 10px;
-            margin-bottom: 10px;
             background: rgba(74, 73, 73, 0.57);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -89,8 +89,10 @@
         }
 
         #Tabla {
+            margin-right: 5%;
+            margin-left: 5%;
+
             border-collapse: collapse;
-            width: 100%; 
             font-family:"verdana";
             background: rgba(118, 108, 108, 0.33);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -127,7 +129,6 @@
         #content {
             visibility: hidden;
             display: none;
-            z-index: 2;
         }
 
         .loadercontainer {
@@ -135,18 +136,23 @@
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            height: 100%;
-            width: 100%;
+        }
+        #pcont {
         }
 
-        #pcont {
-            height: 0%;
-            width: 100%;
+        #sinmargen {
+            display: block;
+            font: 10.5em 'Montserrat';
+            width: 50%;
+            height: 50%;
+            margin-top: 5%;
+            margin-left: 23%;
+            margin-bottom: 5%;
         }
         
         .progress {
-            margin-top: 45%;
-            margin-left: 10%;
+            margin-top: 20%;
+            margin-left: 13%;
             margin-right: 5%;
             justify-content: flex-start;
             border-radius: 100px;
@@ -172,11 +178,18 @@
             100% { width: 68%; }
             }
 
+            @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+            }
+
+
+
     </style>
 </head>
 <body>
 <div id="content">
-    <svg viewBox="0 0 960 300">
+    <svg id="logo" viewBox="0 0 960 300">
         <symbol id="s-text">
             <text text-anchor="middle" x="50%" y="80%">GMZ</text>
         </symbol>
@@ -15208,6 +15221,18 @@
     </div>
     <div class"loadercontainer">
         <div id="pcont">
+        <svg id="sinmargen" viewBox="0 0 960 300">
+        <symbol id="s-text">
+            <text text-anchor="middle" x="50%">GMZ</text>
+        </symbol>
+        <g class = "g-ants">
+            <use xlink:href="#s-text" class="mg-text-me"></use>
+            <use xlink:href="#s-text" class="mg-text-me"></use>
+            <use xlink:href="#s-text" class="mg-text-me"></use>
+            <use xlink:href="#s-text" class="mg-text-me"></use>
+            <use xlink:href="#s-text" class="mg-text-me"></use>
+        </g>
+    </svg>
             <div class="progress">
                 <div class="progress-value"></div>
             </div>
@@ -15220,16 +15245,17 @@
             $("body").css("overflow", "hidden");
             setTimeout(
                 function() 
-                {
-                    $(".loadercontainer").css('display', 'none');
-                }, 8000);
-
+                {   
+                    $(".loadercontainer").css({"animation":"fadeIn 2s;"});
+                    $(".loadercontainer #pcont, .progress .progress-value").css({"display":"none"});
+                }, 6000);
             setTimeout(
                 function() 
                 {
                     $("#content").css("visibility", "visible");
+                    $("#content").css("display", "inline");
                     $("body").css("overflow-y", "scroll");
-                }, 1100);
+                }, 6100);
             
         });
         function searchBar() {
