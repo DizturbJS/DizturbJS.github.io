@@ -20,6 +20,8 @@
         background-color: #999;
         font-family: Arial;
         color:#b3b3b3;
+        width:100%;
+        overflow:hidden;
 
     }
 
@@ -72,10 +74,10 @@
     
         #Buscador {
 
-            margin-right: 5%;
+            margin-right: 12%;
             margin-left: 12%;
             margin-bottom: 10px;
-            width: 83%;
+            width: 76%;
             border-radius: 5px;
             font-size: 16px; 
             padding: 12px 20px 12px 40px; 
@@ -138,6 +140,7 @@
             background-attachment: fixed;
         }
         #pcont {
+            color:white;
         }
 
         #sinmargen {
@@ -15242,19 +15245,19 @@
 
     
         $(window).on("load", function() {
-            $("body").css("overflow", "hidden");
             setTimeout(
                 function() 
                 {   
                     $(".loadercontainer").css({"animation":"fadeIn 2s;"});
                     $(".loadercontainer #pcont, .progress .progress-value").css({"display":"none"});
+                    $("#sinmargen").css({"visibility":"hidden"});
                 }, 6000);
             setTimeout(
                 function() 
                 {
                     $("#content").css("visibility", "visible");
                     $("#content").css("display", "inline");
-                    $("body").css("overflow-y", "scroll");
+                    $("body").css("overflow", "auto");
                 }, 6100);
             
         });
